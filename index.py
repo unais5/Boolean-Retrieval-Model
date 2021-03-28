@@ -36,7 +36,7 @@ class Indexer:
         for doc_id, file_name in enumerate(file_list):
             word_pos = 0
             with open(path + file_name, 'r' , encoding="utf-8") as file_data:
-                token_file.write("\nDOC-" + str(doc_id) + '#\n')
+                token_file.write("\nDOC-" + str(doc_id+1) + '#\n')
                 for line in file_data:
                     # split and tokenize word by given charecters
                     for word in re.split(self.tokenize_regex, line):
@@ -47,12 +47,12 @@ class Indexer:
                         word = ps.stem(word)
                         if word:
                             # add to positional index with stop words included
-                            self.positional(word, word_pos, doc_id)
+                            self.positional(word, word_pos, doc_id+1)
                             word_pos += 1
                             token_file.write(word + ' ')
                             # add to invered index excluding stop words
                             if word not in self.stop_words:
-                                self.inverted(word, doc_id)
+                                self.inverted(word, doc_id+1)
 
     # write positional and inverted index to file
     def index_to_file(self, path):
