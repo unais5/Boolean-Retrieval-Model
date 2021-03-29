@@ -38,7 +38,7 @@ class Indexer:
             with open(path + file_name, 'r' , encoding="utf-8") as file_data:
                 token_file.write("\nDOC-" + str(doc_id+1) + '#\n')
                 for line in file_data:
-                    # split and tokenize word by given charecters
+                    # split and tokenize word by given characters
                     for word in re.split(self.tokenize_regex, line):
                         # remove trailing commas and apostrophes
                         word = re.sub('[,\'\n]', '', word)
@@ -219,11 +219,11 @@ class Indexer:
         return ans
 
 
-if __name__ == "__main__":
-    indexer = Indexer()
-    indexer.read_file('ShortStories/')
-    indexer.index_to_file('files/')
-    query_ans = indexer.search_query("running")
-    print(query_ans)
-    print(len(indexer.inverted_index))
-    print(len(indexer.positional_index))
+# if __name__ == "__main__":
+#     indexer = Indexer()
+#     indexer.read_file('ShortStories/')
+#     indexer.index_to_file('files/')
+#     query_ans = indexer.search_query("running")
+#     print(query_ans)
+#     print(len(indexer.inverted_index))
+#     print(len(indexer.positional_index))

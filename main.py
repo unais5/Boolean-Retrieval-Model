@@ -16,7 +16,7 @@ class Table:
             self.listBox.insert("", "end", values=(
                 '-', '-', '-'))
         for i, doc_id in enumerate(answer_list):
-            file_name = str(doc_id+1)+".txt"
+            file_name = str(doc_id)+".txt"
             f = open('ShortStories/'+file_name, "r" , encoding="utf-8")
             title = f.readline()
             self.listBox.insert("", "end", values=(
