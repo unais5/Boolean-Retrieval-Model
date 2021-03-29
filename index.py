@@ -187,7 +187,7 @@ class Indexer:
                 ans.append(self.inverted_index.get(temp_str, []))
         return ans.pop()
 
-    # and logical operation
+    # and operation
     def and_query(self, list1, list2):
         ans = []
         i = 0
@@ -203,14 +203,14 @@ class Indexer:
                 j += 1
         return ans
 
-    # or logical operation
+    # or operation
     def or_query(self, list1, list2):
         ans = list1 + list2
         ans = list(dict.fromkeys(ans))
         ans = sorted(ans)
         return ans
 
-    # not logical operation
+    # not operation
     def not_query(self, list1):
         ans = []
         for i in range(self.doc_count):
@@ -218,12 +218,3 @@ class Indexer:
                 ans.append(i)
         return ans
 
-
-# if __name__ == "__main__":
-#     indexer = Indexer()
-#     indexer.read_file('ShortStories/')
-#     indexer.index_to_file('files/')
-#     query_ans = indexer.search_query("running")
-#     print(query_ans)
-#     print(len(indexer.inverted_index))
-#     print(len(indexer.positional_index))
